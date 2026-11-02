@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0a1e3c;
+  --gold: #d4a017;
+  --orange: #f28c28;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply font-body text-navy bg-cream antialiased; }
+
+::selection { background: var(--gold); color: white; }
+
+/* ---------- Glassmorphism ---------- */
+.glass {
+  @apply border border-white/20 bg-white/10 backdrop-blur-xl;
+  box-shadow: 0 8px 32px rgba(10, 30, 60, 0.15);
+}
+.glass-light {
+  @apply border border-white/60 bg-white/70 backdrop-blur-xl;
+  box-shadow: 0 8px 32px rgba(10, 30, 60, 0.08);
+}
+.glass-dark {
+  @apply border border-white/10 bg-navy/60 backdrop-blur-xl;
+}
+
+/* ---------- Premium helpers ---------- */
+.text-gradient-gold {
+  background: linear-gradient(100deg, #a87b0a 0%, #d4a017 30%, #f0c75e 50%, #d4a017 70%, #a87b0a 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 3.5s linear infinite;
+}
+.hero-sky {
+  background:
+    radial-gradient(ellipse 80% 55% at 70% -10%, rgba(242, 140, 40, 0.45), transparent),
+    radial-gradient(ellipse 60% 45% at 20% 10%, rgba(212, 160, 23, 0.30), transparent),
+    linear-gradient(160deg, #061428 0%, #0a1e3c 55%, #12305c 100%);
+}
+.card-hover {
+  @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl;
+}
+.btn-gold {
+  @apply inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold to-orange px-7 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-gold/40;
+}
+.btn-outline {
+  @apply inline-flex items-center gap-2 rounded-full border-2 border-gold px-7 py-3 font-semibold text-gold transition-all duration-300 hover:bg-gold hover:text-white focus:outline-none focus:ring-4 focus:ring-gold/30;
+}
+.section-title { @apply font-display text-3xl font-bold text-navy md:text-4xl; }
+
+/* ---------- Scroll reveal ---------- */
+.reveal { opacity: 0; transform: translateY(28px); transition: all 0.7s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ---------- Accessibility ---------- */
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
